@@ -40,6 +40,14 @@ options     head
 		"""${3:#:method documentation}"""
 		${0:TARGET}
 
+snippet     mydef
+abbr        def function(...): ...
+options     head
+	def ${1:#:name}(${2}):
+        import my_utils
+        print "function called "+my_utils.get_func_name()+"()"
+		${0:TARGET}
+
 snippet     elif
 abbr        elif ...: ...
 options     head
@@ -112,3 +120,29 @@ abbr        [x for x in {list} if {condition}]
 snippet     print
 options     word
   print(${0:TARGET})
+
+snippet     init
+abbr        initialize
+options     head
+    #-*- coding: utf-8 -*-
+    import os
+    import sys
+
+
+    def main(argv):
+
+
+    if __name__ == '__main__':
+        main(sys.argv)
+
+snippet     mkdir
+abbr        make dirs
+options     head
+    if not os.path.isdir(${1:output_dir}): os.mkdir($1) ${2:# import os}
+
+
+
+snippet     time
+abbr        datetime.
+options     head
+    ${1:time_stamp} = datetime.datetime.utcnow() ${2:#import datetime}
