@@ -24,10 +24,18 @@ alias   \begin{quotation} \quotation
 	\end{quotation}
 
 snippet description
-alias   \begin{description} \description
+alias   \begin{description} \description desc
 	\begin{description}
-		\item ${1:TARGET}
+		\item[${1}] ${0}
 	\end{description}
+
+snippet itd
+alias   item[ \item[
+	\item[${1}] ${0}
+
+snippet it
+alias   item \item
+	\item $0
 
 snippet sloppypar
 alias   \begin{sloppypar} \sloppypar
@@ -36,7 +44,7 @@ alias   \begin{sloppypar} \sloppypar
 	\end{sloppypar}
 
 snippet enumerate
-alias   \begin{enumerate} \enumerate
+alias   \begin{enumerate} \enumerate enum
 	\begin{enumerate}
 		\item ${1:TARGET}
 	\end{enumerate}
@@ -143,6 +151,18 @@ alias   \begin{abstract} \abstract
 		${1:TARGET}
 	\end{abstract}
 
+snippet align
+alias   \begin{align} \align
+	\begin{align}
+		${1:TARGET}
+	\end{align}
+
+snippet align*
+alias   \begin{align*} \align*
+	\begin{align*}
+		${1:TARGET}
+	\end{align*}
+
 snippet eqnarray
 alias   \begin{eqnarray} \eqnarray
 	\begin{eqnarray}
@@ -154,12 +174,6 @@ alias   \begin{eqnarray*} \eqnarray*
 	\begin{eqnarray*}
 		${1:TARGET}
 	\end{eqnarray*}
-
-snippet appendix
-alias   \begin{appendix} \appendix
-	\begin{appendix}
-		${1:TARGET}
-	\end{appendix}
 
 snippet equation
 alias   \begin{equation} \equation
@@ -188,11 +202,10 @@ alias   \begin{document} \document
 snippet figure
 alias   \begin{figure} \figure
 	\begin{figure}
-		\begin{center}
-			\includegraphics[${1:width=}]{${2}}
-			\caption{${3}}
-			\label{${4}}
-		\end{center}
+		\centering
+		\includegraphics[${1:width=}]{${2}}
+		\caption{${3}}
+		\label{${4}}
 	\end{figure}
 
 snippet filecontents

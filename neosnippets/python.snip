@@ -121,6 +121,22 @@ snippet     print
 options     word
   print(${0:TARGET})
 
+snippet     coding
+abbr        # -*- coding ...
+    # -*- coding: utf-8 -*-
+
+snippet     getattr
+abbr        getattr(..., ...)
+    getattr(#:obj, #:attr)
+
+snippet     setattr
+abbr        setattr(..., ...)
+    setattr(#:obj, #:attr)
+
+snippet     pdb
+abbr        import pdb..
+    import pdb; pdb.set_trace()
+
 snippet     init
 abbr        initialize
 options     head
