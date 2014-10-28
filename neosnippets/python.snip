@@ -140,7 +140,7 @@ abbr        import pdb..
 snippet     init
 abbr        initialize
 options     head
-    #-*- coding: utf-8 -*-
+    #-*- coding: ${1:utf-8} -*-
     import os
     import sys
 
@@ -155,7 +155,6 @@ snippet     mkdir
 abbr        make dirs
 options     head
     if not os.path.isdir(${1:output_dir}): os.mkdir($1) ${2:# import os}
-
 
 
 snippet     time
@@ -180,3 +179,9 @@ options     head
     from pprint import PrettyPrinter as _pp
     pp = _pp(indent = 4)
     pp.print(${1:print_target})
+
+snippet     walk
+abbr        os.walk()
+options     head
+    for root_dir, dirs, files in os.walk(${1:path}):
+        for ${2:file} in files:
