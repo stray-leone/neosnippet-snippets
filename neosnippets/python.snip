@@ -162,3 +162,21 @@ snippet     time
 abbr        datetime.
 options     head
     ${1:time_stamp} = datetime.datetime.utcnow() ${2:#import datetime}
+
+snippet     enc
+abbr        encode("utf-8")
+options     head
+    .encoding("utf-8")
+
+
+snippet     dec
+abbr        decode("utf-8")
+options     head
+    .decoding("utf-8")
+
+snippet     pprint
+abbr        pprint
+options     head
+    from pprint import PrettyPrinter as _pp
+    pp = _pp(indent = 4)
+    pp.print(${1:print_target})
