@@ -16,6 +16,16 @@ snippet     cc
 abbr        comment
     (* ${1:TARGET} *)
 
+snippet     Cc
+abbr        multi line comment
+    (*
+       ${1:TARGET}
+    *)
+
+snippet     oo
+abbr        ocamldoc comment (** .. *)
+    (** ${1:TARGET} *)
+
 snippet     if
 abbr        if..then..else
     if ${1:TARGET}
@@ -24,12 +34,17 @@ abbr        if..then..else
 
 snippet     let
 abbr        let..in
-    let ${1:TARGET} in
-    ${0}
+    let ${1:TARGET} in ${0}
+
+snippet     letr
+abbr        let rec .. in
+options     head
+    let rec ${1:TARGET}
+    in ${0}
 
 snippet     match
 abbr        match
-    match ${1:TARGET} in
+    match ${1:TARGET} with
     | ${2} -> ${0}
 
 snippet     obj
@@ -48,3 +63,39 @@ abbr        let open .. in
 options     head
     let open ${1} in
     ${2:TARGET}
+
+snippet     for
+abbr        for i=x..y do; ... done
+options     head
+    for ${1:i} = ${2:0} to ${3:10} do
+      ${0:TARGET}
+    done
+
+snippet     while
+abbr        while ... do; ... done
+options     head
+    while ${1:true} do
+      ${2:TARGET}
+    done
+
+snippet     fun
+abbr        (fun x -> ...)
+    (fun ${1:x} -> ${2:x})
+
+snippet     arl
+abbr        array literal [| |]
+    [| ${0:TARGET} |]
+
+snippet     fail
+abbr        failwith "..."
+    failwith "${0:TODO}"
+
+snippet     exn
+abbr        exception
+options     head
+    exception ${0:TARGET} of ${1:string}
+
+snippet     lit
+abbr        string literals {xxx| ... |xxx}
+options     head
+    {${0:}|${1:TARGET}|$0}
