@@ -144,7 +144,7 @@ options     head
     import os
     import sys
     import logging
-    logging.basicConfig(format='%(asctime)s : %(threadName)s : %(levelname)s : %(message)s', level=logging.INFO)
+    logging.basicConfig(filename= __name__+".log", format='%(asctime)s : %(threadName)s : %(levelname)s : %(message)s', level=logging.INFO)
 
     def main(argv):
 
@@ -178,7 +178,7 @@ abbr        pprint
 options     head
     from pprint import PrettyPrinter as _pp
     pp = _pp(indent = 4)
-    pp.print(${1:print_target})
+    pp.pprint(${1:print_target})
 
 snippet     walk
 abbr        os.walk()
