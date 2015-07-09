@@ -185,3 +185,54 @@ abbr        os.walk()
 options     head
     for root_dir, dirs, files in os.walk(${1:path}):
         for ${2:file} in files:
+
+snippet     process
+abbr        multi processing
+options     head
+    # for multi process
+    from multiprocessing import Process, current_process
+    import multiprocessing
+    import Queue
+
+
+    def main(argv):
+
+        def target_function(queue):
+
+            while True:
+                try:
+                    #TODO: do something.
+                
+                except Queue.Empty as empty_e:
+                    sys.stderr.write(current_process_name+" "+"Queue is empty"+"\n")
+                    with open("ru_word_retrieve.log","a") as log_file: log_file.write(current_process_name+" Queue is empty"+"\n")
+                    #continue
+                    break
+
+        queue = multiprocessing.Queue()
+        processes = []
+        process_size = 6
+        
+        #TODO: SET input file path
+        input_dir = "../input/"
+        input_fname = "FRA.vocab"
+        input_fpath = input_dir+input_fname
+        
+        queue_list= open(input_fpath).readlines()
+        
+        # queuing
+        #for input_sentence in target_docu_list: #khh-to-be-modified
+        for i, item in enumerate(queue_list):
+            item = item.strip()
+            sys.stderr.write(str(i)+" _ queuing : "+item+"\n")
+            queue.put((i+1,item))
+
+        # append process
+        for i in range(process_size):
+            p=Process(target=target_function, args=(queue,))
+            p.start()
+            processes.append(p)
+
+        # join process
+        for p in processes:
+            p.join()
